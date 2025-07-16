@@ -1,11 +1,20 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+class DeviceStatus(BaseModel):
+    batteryLevel: int
+    isIpad: bool
+
+
+@app.post("/")
+async def root(device_status: DeviceStatus):
+    if device_status.batteryLevel == 100 or device_status.isIpad:
+        return {"result": False}
+    else:
+        return {"result": True}
 
 
 @app.get("/hello/{name}")

@@ -27,4 +27,4 @@ COPY . .
 EXPOSE 8080
 
 # Run the application with gunicorn for production
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
+CMD exec gunicorn --bind :${PORT:-8080} --workers 1 --threads 8 --timeout 0 -k uvicorn.workers.UvicornWorker app:app

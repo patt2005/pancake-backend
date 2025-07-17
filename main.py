@@ -11,6 +11,7 @@ class DeviceStatus(BaseModel):
 
 @app.post("/")
 async def root(device_status: DeviceStatus):
+    return {"result": False}
     if device_status.batteryLevel == 100 or device_status.isIpad:
         return {"result": False}
     else:

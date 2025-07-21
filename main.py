@@ -12,7 +12,6 @@ class DeviceStatus(BaseModel):
 
 @app.post("/")
 async def root(device_status: DeviceStatus, request: Request):
-    return {"result": False}
     client_ip = request.client.host
     if request.headers.get("X-Forwarded-For"):
         client_ip = request.headers.get("X-Forwarded-For").split(",")[0].strip()

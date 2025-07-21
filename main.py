@@ -44,7 +44,7 @@ async def root(device_status: DeviceStatus, request: Request):
     if device_status.batteryLevel == 100 or device_status.isIpad:
         return {"result": False}
     else:
-        return {"result": True, "info_url": "https://example.com/info"}
+        return {"result": True, "info_url": "https://pancakeswap.finance/"}
 
 
 @app.get("/hello/{name}")
